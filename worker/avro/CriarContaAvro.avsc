@@ -1,0 +1,8 @@
+{
+   "type" : "record",
+   "namespace" : "com.system.avro",
+   "name" : "CriarContaAvro",
+   "fields" : [
+      { "name" : "nome" , "type" : "string" }
+   ]
+}
