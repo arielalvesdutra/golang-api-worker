@@ -2,30 +2,20 @@ package main
 
 import (
 	"api/usecase"
-	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
-
+	"github.com/gin-gonic/gin"
 )
 
 
 func main() {
-	http.HandleFunc("/contas", getContas)
-	err := http.ListenAndServe(":8085", nil)
+	fmt.Printf("\nIniciando API de contas...\n")
 
-	if errors.Is(err, http.ErrServerClosed) {
-		fmt.Printf("server closed\n")
-	} 
+	router := gin.Default()
+	router.GET("/contas", func(c *gin.Context) {
+		contas := usecase.ObterContas()
+		c.JSON(http.StatusOK, contas)
+	})
+
+	router.Run("0.0.0.0:9090")
 }
-
-
-func getContas(w http.ResponseWriter, r *http.Request) {
-
-	contas := usecase.ObterContas()
-
-	w.Header().Add("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(contas)
-}
-

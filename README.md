@@ -43,4 +43,4 @@ Para consultar a API, basta acessar o endereço `GET` de `http://localhost:8085/
 
 ## Aplicação Kotlin
 
-TODO: adicionar o link
+Link para o repositório da aplicação Kotlin: https://github.com/arielalvesdutra/kotlin-api
